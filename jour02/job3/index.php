@@ -1,23 +1,104 @@
-<?php
-for ($i = 1; $i <= 100; $i++) {
-    // Si le nombre est un multiple de 3 et de 5, afficher "FizzBuzz"
-    if ($i % 3 == 0 && $i % 5 == 0) {
-        echo "FizzBuzz<br>";
-    }
-    // Si le nombre est un multiple de 3, afficher "Fizz"
-    elseif ($i % 3 == 0) {
-        echo "Fizz<br>";
-    }
-    // Si le nombre est un multiple de 5, afficher "Buzz"
-    elseif ($i % 5 == 0) {
-        echo "Buzz<br>";
-    }
-    // Si le nombre n'est pas un multiple de 3 ou 5, afficher le nombre lui-même
-    else {
-        echo $i . "<br>";
-    }
-}
-?>
+*0*
+*1*
+*2*
+*3*
+*4*
+*5*
+*6*
+*7*
+*8*
+*9*
+*10*
+*11*
+*12*
+*13*
+*14*
+*15*
+*16*
+*17*
+*18*
+*19*
+*20*
+21
+22
+23
+*24*
+__25__
+__26__
+__27__
+__28__
+__29__
+__30__
+__31__
+__32__
+__33__
+__34__
+__35__
+__36__
+__37__
+__38__
+__39__
+__40__
+__41__
+La Plateforme_
+__43__
+__44__
+__45__
+__46__
+__47__
+__48__
+__49__
+__50__
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
 
 
 
