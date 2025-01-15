@@ -1,10 +1,15 @@
 <?php
-// Définition de la chaîne
-$str = "Tous ces instants seront perdus dans le temps comme les larmes sous la pluie.";
+// Tableau des nombres
+$nombres = array(200, 204, 173, 98, 171, 404, 459);
 
-// Parcours de la chaîne en affichant un caractère sur deux
-for ($i = 0; $i < strlen($str); $i += 2) {
-    echo $str[$i];
+// Parcours du tableau
+foreach ($nombres as $nombre) {
+    if ($nombre % 2 == 0) {
+        echo $nombre . " est paire<br />";
+    } else {
+        echo $nombre . " est impaire<br />";
+    }
 }
 ?>
+
 
