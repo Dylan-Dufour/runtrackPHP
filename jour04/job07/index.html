@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de maison</title>
+    <style>
+        /* Style de la maison */
+        .maison {
+            display: inline-block;
+            border: 1px solid black;
+            position: relative;
+        }
+        .toit {
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 50px solid red;
+            position: absolute;
+            top: -50px;
+            left: 0;
+        }
+        .corps {
+            width: 100%;
+            height: 100%;
+            background-color: yellow;
+            position: relative;
+        }
+        .porte {
+            width: 30%;
+            height: 40%;
+            background-color: brown;
+            position: absolute;
+            bottom: 0;
+            left: 35%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulaire de maison</h1
+        <!DOCTYPE html>
+        <html lang="fr">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Formulaire de maison</title>
+            <style>
+                /* Style de la maison */
+                .maison {
+                    display: inline-block;
+                    border: 1px solid black;
+                    position: relative;
+                }
+                .toit {
+                    width: 0;
+                    height: 0;
+                    border-left: 50px solid transparent;
+                    border-right: 50px solid transparent;
+                    border-bottom: 50px solid red;
+                    position: absolute;
+                    top: -50px;
+                    left: 0;
+                }
+                .corps {
+                    width: 100%;
+                    height: 100%;
+                    background-color: yellow;
+                    position: relative;
+                }
+                .porte {
+                    width: 30%;
+                    height: 40%;
+                    background-color: brown;
+                    position: absolute;
+                    bottom: 0;
+                    left: 35%;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Formulaire de maison</h1>
+            <form method="GET" action="">
+                <label for="largeur">Largeur (en px) :</label>
+                <input type="number" id="largeur" name="largeur" required><br><br>
+        
+                <label for="hauteur">Hauteur (en px) :</label>
+                <input type="number" id="hauteur" name="hauteur" required><br><br>
+        
+                <input type="submit" value="Afficher la maison">
+            </form>
+        
+            <?php
+            if (isset($_GET['largeur']) && isset($_GET['hauteur'])) {
+                $largeur = intval($_GET['largeur']);
+                $hauteur = intval($_GET['hauteur']);
+                
+                // Calculer les dimensions de la maison en fonction des valeurs saisies
+                echo '<div class="maison" style="width: '.$largeur.'px; height: '.$hauteur.'px;">';
+                
+                // Afficher le toit
+                echo '<div class="toit" style="border-bottom-width: '.(min($largeur, 100) / 2).'px;"></div>';
+        
+                // Afficher le corps de la maison
+                echo '<div class="corps" style="height: '.($hauteur - 50).'px;">';
+        
+                // Afficher la porte
+                echo '<div class="porte" style="left: '.($largeur * 0.35).'px;"></div>';
+                
+                echo '</div></div>';
+            }
+            ?>
+        </body>
+        </html>
+        
+
