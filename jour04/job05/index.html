@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de connexion</title>
+</head>
+<body>
+    <h1>Connexion</h1>
+    <form method="POST" action="connexion.php">
+        <label for="username">Nom d'utilisateur :</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="submit" value="Se connecter">
+    </form>
+</body>
+</html>
+
+
+<?php
+// connexion.php
+
+// Vérifier si les données du formulaire sont envoyées
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Récupérer les valeurs envoyées par le formulaire
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Vérifier les informations de connexion
+    if ($username == "John" && $password == "Rambo") {
+        echo "C'est pas ma guerre";
+    } else {
+        echo "Votre pire cauchemar";
+    }
+}
+?>
+
+
