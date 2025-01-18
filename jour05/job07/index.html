@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Transformations</title>
+    <style>
+        .gras {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Formulaire de Transformations de Texte</h1>
+
+    <form id="form" onsubmit="transformerTexte(event)">
+        <label for="texte">Entrez un texte :</label>
+        <input type="text" id="texte" name="texte" required>
+        <br><br>
+
+        <label for="transformation">Choisissez une transformation :</label>
+        <select id="transformation" name="transformation">
+            <option value="gras">Gras</option>
+            <option value="cesar">César</option>
+            <option value="plateforme">Plateforme</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Valider</button>
+    </form>
+
+    <h2>Résultat :</h2>
+    <p id="resultat"></p>
+
+    <script>
+        function transformerTexte(event) {
+            event.preventDefault(); // Empêche le formulaire de se soumettre normalement
+            const texte = document.getElementById('texte').value;
+            const transformation = document.getElementById('transformation').value;
+            let resultat = '';
+
+            if (transformation === 'gras') {
+                resultat = appliquerGras(texte);
+            } else if (transformation === 'cesar') {
+                resultat = appliquerCesar(texte, 2); // Décalage de 2 par défaut
+            } else if (transformation === 'plateforme') {
+                resultat = appliquerPlateforme(texte);
+            }
+
+            document.getElementById('resultat').innerHTML
+            <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Transformations</title>
+    <style>
+        .gras {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Formulaire de Transformations de Texte</h1>
+
+    <form id="form" onsubmit="transformerTexte(event)">
+        <label for="texte">Entrez un texte :</label>
+        <input type="text" id="texte" name="texte" required>
+        <br><br>
+
+        <label for="transformation">Choisissez une transformation :</label>
+        <select id="transformation" name="transformation">
+            <option value="gras">Gras</option>
+            <option value="cesar">César</option>
+            <option value="plateforme">Plateforme</option>
+        </select>
+        <br><br>
+
+        <button type="submit">Valider</button>
+    </form>
+
+    <h2>Résultat :</h2>
+    <p id="resultat"></p>
+
+    <script>
+        function transformerTexte(event) {
+            event.preventDefault(); // Empêche le formulaire de se soumettre normalement
+            const texte = document.getElementById('texte').value;
+            const transformation = document.getElementById('transformation').value;
+            let resultat = '';
+
+            if (transformation === 'gras') {
+                resultat = appliquerGras(texte);
+            } else if (transformation === 'cesar') {
+                resultat = appliquerCesar(texte, 2); // Décalage de 2 par défaut
+            } else if (transformation === 'plateforme') {
+                resultat = appliquerPlateforme(texte);
+            }
+
+            document.getElementById('resultat').innerHTML = resultat;
+        }
+
+        // Transformation "gras" : mettre en gras les mots commençant par une majuscule
+        function appliquerGras(texte) {
+            const mots = texte.split(' ');
+            const motsTransformes = mots.map(mot => {
+                if (mot.charAt(0) === mot.charAt(0).toUpperCase()) {
+                    return `<span class="gras">${mot}</span>`;
+                }
+                return mot;
+            });
+            return motsTransformes.join(' ');
+        }
+
+        // Transformation "César" : décalage des caractères
+        function appliquerCesar(texte, decalage = 2) {
+            return texte.split('').map(caractere => {
+                const code = caractere.charCodeAt(0);
+                // Décalage pour les lettres uniquement
+                if (caractere.match(/[a-zA-Z]/)) {
+                    const base = caractere.toLowerCase() === caractere ? 97 : 65; // 'a' ou 'A'
+                    return String.fromCharCode(((code - base + decalage) % 26) + base);
+                }
+                return caractere;
+            }).join('');
+        }
+
+        // Transformation "Plateforme" : remplacer les mots finissant par "me" par "_"
+        function appliquerPlateforme(texte) {
+            const mots = texte.split(' ');
+            const motsTransformes = mots.map(mot => {
+                if (mot.endsWith('me')) {
+                    return '_';
+                }
+                return mot;
+            });
+            return motsTransformes.join(' ');
+        }
+    </script>
+
+</body>
+</html>
