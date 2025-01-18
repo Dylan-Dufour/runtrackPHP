@@ -1,0 +1,36 @@
+def calcule(nombre1, operateur, nombre2):
+    if operateur == '+':
+        return nombre1 + nombre2
+    elif operateur == '-':
+        return nombre1 - nombre2
+    elif operateur == '*':
+        return nombre1 * nombre2
+    elif operateur == '/':
+        if nombre2 != 0:
+            return nombre1 / nombre2
+        else:
+            return "Erreur : Division par zéro"
+    elif operateur == '%':
+        if nombre2 != 0:
+            return nombre1 % nombre2
+        else:
+            return "Erreur : Division par zéro"
+    else:
+        return "Opérateur non valide"
+
+        
+        # Appel de la fonction avec différents opérateurs
+resultat1 = calcule(10, '+', 5)   # Affichera 15
+resultat2 = calcule(10, '-', 5)   # Affichera 5
+resultat3 = calcule(10, '*', 5)   # Affichera 50
+resultat4 = calcule(10, '/', 5)   # Affichera 2.0
+resultat5 = calcule(10, '/', 0)   # Affichera "Erreur : Division par zéro"
+resultat6 = calcule(10, '%', 3)   # Affichera 1
+
+# Affichage des résultats
+print(resultat1)
+print(resultat2)
+print(resultat3)
+print(resultat4)
+print(resultat5)
+print(resultat6)
