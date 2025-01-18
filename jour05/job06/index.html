@@ -1,0 +1,22 @@
+def to_leet_speak(chaine):
+    leet_dict = {
+        'a': '4',
+        'e': '3',
+        'l': '1',
+        't': '7',
+        'o': '0',
+        's': '5',
+        'b': '8'
+    }
+
+    # Conversion de la chaîne
+    leet_chaine = ''.join(leet_dict[char] if char in leet_dict else char for char in chaine.lower())
+
+    return leet_chaine
+
+    # Exemple d'appel de la fonction
+chaine = "Hello, this is a test"
+leet_chaine = to_leet_speak(chaine)
+
+# Affichage du résultat
+print(leet_chaine)  # Affichera "h3110, 7hi5 i5 4 7357"
