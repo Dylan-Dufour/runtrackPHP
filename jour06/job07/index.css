@@ -1,0 +1,23 @@
+function bubblesort(tab, croissant) {
+    let n = tab.length;
+
+    // Effectuer un tri à bulles
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - 1 - i; j++) {
+            // Si croissant est true, comparer dans l'ordre croissant, sinon dans l'ordre décroissant
+            if ((croissant && tab[j] > tab[j + 1]) || (!croissant && tab[j] < tab[j + 1])) {
+                // Échanger les éléments si nécessaire
+                let temp = tab[j];
+                tab[j] = tab[j + 1];
+                tab[j + 1] = temp;
+            }
+        }
+    }
+
+    // Retourner le tableau trié
+    return tab;
+}
+
+let tab = ["abc", "ghi", "def"];
+console.log(bubblesort(tab, true));  // Résultat : ["abc", "def", "ghi"] (ordre croissant)
+console.log(bubblesort(tab, false)); // Résultat : ["ghi", "def", "abc"] (ordre décroissant)
