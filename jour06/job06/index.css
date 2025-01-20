@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire avec style dynamique</title>
+    <link id="style-link" rel="stylesheet" href="style1.css"> <!-- Par défaut, style1.css -->
+</head>
+<body>
+    <div class="form-container">
+        <form id="style-form">
+            <label for="style">Choisir un style :</label>
+            <select name="style" id="style">
+                <option value="style1">Style 1</option>
+                <option value="style2">Style 2</option>
+                <option value="style3">Style 3</option>
+            </select>
+            <button type="submit">Appliquer le style</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('style-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+
+            // Récupère la valeur sélectionnée dans la liste déroulante
+            const selectedStyle = document.getElementById('style').value;
+
+            // Change la feuille de style en fonction de la sélection
+            document.getElementById('style-link').setAttribute('href', selectedStyle + '.css');
+        });
+    </script>
+</body>
+</html>
+
+/* style1.css */
+body {
+    background-color: #f0f8ff;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+select, button {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* style2.css */
+body {
+    background-color: #f5f5f5;
+    font-family: 'Verdana', sans-serif;
+    color: #2f4f4f;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 2px solid #2f4f4f;
+    background-color: #ffffff;
+    border-radius: 15px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+select, button {
+    padding: 12px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 2px solid #2f4f4f;
+}
+
+button {
+    background-color: #4682b4;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #5a8fb6;
+}
+
+/* style3.css */
+body {
+    background-color: #2e3b4e;
+    font-family: 'Courier New', monospace;
+    color: #fff;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 25px;
+    border: 1px solid #fff;
+    background-color: #3b4f68;
+    border-radius: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+select, button {
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: 1px solid #fff;
+}
+
+button {
+    background-color: #e74c3c;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #c0392b;
+}
