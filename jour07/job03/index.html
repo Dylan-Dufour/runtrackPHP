@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Prénoms</title>
+</head>
+<body>
+
+    <h1>Ajouter un prénom</h1>
+
+    <form id="prenomForm">
+        <input type="text" id="prenomInput" placeholder="Entrez un prénom" required>
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <h2>Liste des prénoms</h2>
+    <ul id="prenomList"></ul>
+
+    <button id="resetButton">Réinitialiser la liste</button>
+
+    <script>
+        // Fonction pour récupérer les prénoms de sessionStorage
+        function getPrenoms() {
+            let prenoms = sessionStorage.getItem("prenoms");
+            return prenoms ? JSON.parse(prenoms) : [];
+        }
+
+        // Fonction pour afficher les prénoms
+        function afficherPrenoms() {
+            const prenoms = getPrenoms();
+            const prenomList = document.getElementById("prenomList");
+            prenomList.innerHTML = ""; // Réinitialiser la liste affichée
+
+            prenoms.forEach(function(prenom) {
+                const li = document.createElement("li");
+                li.textContent = prenom;
+                prenomList.appendChild(li);
+            });
+        }
+
+        // Ajouter un prénom à la sessionStorage et réafficher la liste
+        document.getElementById("prenomForm").onsubmit = function(event) {
+            event.preventDefault(); // Empêche la soumission normale du formulaire
+            const prenomInput = document.getElementById("prenomInput");
+            const prenom = prenomInput.value.trim();
+
+            if (prenom) {
+                let prenoms = getPrenoms();
+                prenoms.push(prenom); // Ajouter le prénom à la liste
+                sessionStorage.setItem("prenoms", JSON.stringify(prenoms)); // Sauvegarder dans la sessionStorage
+
+                afficherPrenoms(); // Mettre à jour l'affichage des prénoms
+                prenomInput.value = ""; // Réinitialiser le champ de saisie
+            }
+        };
+
+        // Réinitialiser la liste de prénoms
+        document.getElementById("resetButton").onclick = function() {
+            sessionStorage.removeItem("prenoms"); // Supprimer les prénoms de la sessionStorage
+            afficherPrenoms(); // Mettre à jour l'affichage (liste vide)
+        };
+
+        // Afficher les prénoms au chargement de la page
+        afficherPrenoms();
+    </script>
+
+</body>
+</html>
