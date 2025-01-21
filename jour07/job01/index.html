@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur de visites</title>
+</head>
+<body>
+
+    <h1>Bienvenue sur la page !</h1>
+    <p>Nombre de visites : <span id="nbvisites">0</span></p>
+
+    <button id="resetButton">Réinitialiser le compteur</button>
+
+    <script>
+        // Initialisation de la variable nbvisites
+        let nbvisites = localStorage.getItem("nbvisites") ? parseInt(localStorage.getItem("nbvisites")) : 0;
+
+        // Afficher le nombre de visites
+        function afficherVisites() {
+            document.getElementById("nbvisites").textContent = nbvisites;
+        }
+
+        // Incrémenter le compteur et l'enregistrer dans le localStorage
+        nbvisites++;
+        localStorage.setItem("nbvisites", nbvisites);
+
+        // Affichage initial du compteur
+        afficherVisites();
+
+        // Fonction pour réinitialiser le compteur
+        document.getElementById("resetButton").onclick = function() {
+            nbvisites = 0;
+            localStorage.setItem("nbvisites", nbvisites);
+            afficherVisites();
+        };
+    </script>
+
+</body>
+</html>
