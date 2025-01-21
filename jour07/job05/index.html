@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu du Morpion</title>
+    <style>
+        table {
+            width: 300px;
+            height: 300px;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        td {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid #000;
+        }
+        button {
+            width: 80px;
+            height: 80px;
+            font-size: 2em;
+            cursor: pointer;
+        }
+        #message {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        #resetButton {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <table id="morpionTable">
+        <tr>
+            <td><button type="submit" id="cell-0" onclick="playMove(0)"></button></td>
+            <td><button type="
+                <!DOCTYPE html>
+                <html lang="fr">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Jeu du Morpion</title>
+                    <style>
+                        table {
+                            width: 300px;
+                            height: 300px;
+                            border-collapse: collapse;
+                            margin: 20px auto;
+                        }
+                        td {
+                            width: 100px;
+                            height: 100px;
+                            text-align: center;
+                            vertical-align: middle;
+                            border: 1px solid #000;
+                        }
+                        button {
+                            width: 80px;
+                            height: 80px;
+                            font-size: 2em;
+                            cursor: pointer;
+                        }
+                        #message {
+                            text-align: center;
+                            font-size: 1.5em;
+                            margin-top: 20px;
+                        }
+                        #resetButton {
+                            display: block;
+                            margin: 20px auto;
+                            padding: 10px 20px;
+                            font-size: 1.2em;
+                            cursor: pointer;
+                        }
+                    </style>
+                </head>
+                <body>
+                
+                    <table id="morpionTable">
+                        <tr>
+                            <td><button type="submit" id="cell-0" onclick="playMove(0)"></button></td>
+                            <td><button type="submit" id="cell-1" onclick="playMove(1)"></button></td>
+                            <td><button type="submit" id="cell-2" onclick="playMove(2)"></button></td>
+                        </tr>
+                        <tr>
+                            <td><button type="submit" id="cell-3" onclick="playMove(3)"></button></td>
+                            <td><button type="submit" id="cell-4" onclick="playMove(4)"></button></td>
+                            <td><button type="submit" id="cell-5" onclick="playMove(5)"></button></td>
+                        </tr>
+                        <tr>
+                            <td><button type="submit" id="cell-6" onclick="playMove(6)"></button></td>
+                            <td><button type="submit" id="cell-7" onclick="playMove(7)"></button></td>
+                            <td><button type="submit" id="cell-8" onclick="playMove(8)"></button></td>
+                        </tr>
+                    </table>
+                
+                    <div id="message"></div>
+                    <button id="resetButton" onclick="resetGame()">Réinitialiser la partie</button>
+                
+                    <script>
+                        let board = ['', '', '', '', '', '', '', '', '']; // Le tableau représentant le plateau
+                        let currentPlayer = 'X'; // Le joueur qui commence
+                        let gameOver = false; // Si la partie est terminée
+                
+                        // Fonction pour jouer un coup
+                        function playMove(cellIndex) {
+                            if (gameOver || board[cellIndex] !== '') return; // Ne rien faire si la case est déjà remplie ou si la partie est terminée
+                
+                            board[cellIndex] = currentPlayer; // Placer "X" ou "O" dans la case
+                            document.getElementById('cell-' + cellIndex).textContent = currentPlayer;
+                
+                            if (checkWinner()) {
+                                document.getElementById('message').textContent = currentPlayer + " a gagné!";
+                                gameOver = true;
+                            } else if (board.every(cell => cell !== '')) {
+                                document.getElementById('message').textContent = "Match nul!";
+                                gameOver = true;
+                            } else {
+                                currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Changer de joueur
+                            }
+                        }
+                
+                        // Fonction pour vérifier si un joueur a gagné
+                        function checkWinner() {
+                            const winningCombinations = [
+                                [0, 1, 2], [3, 4, 5], [6, 7, 8], // Lignes
+                                [0, 3, 6], [1, 4, 7], [2, 5, 8], // Colonnes
+                                [0, 4, 8], [2, 4, 6] // Diagonales
+                            ];
+                
+                            return winningCombinations.some(combination => {
+                                const [a, b, c] = combination;
+                                return board[a] && board[a] === board[b] && board[a] === board[c];
+                            });
+                        }
+                
+                        // Fonction pour réinitialiser la partie
+                        function resetGame() {
+                            board = ['', '', '', '', '', '', '', '', ''];
+                            currentPlayer = 'X';
+                            gameOver = false;
+                            document.getElementById('message').textContent = '';
+                            for (let i = 0; i < 9; i++) {
+                                document.getElementById('cell-' + i).textContent = '-';
+                            }
+                        }
+                    </script>
+                
+                </body>
+                </html>
+                
