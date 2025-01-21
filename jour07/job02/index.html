@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur de visites avec Cookie</title>
+</head>
+<body>
+
+    <h1>Bienvenue sur la page !</h1>
+    <p>Nombre de visites : <span id="nbvisites">0</span></p>
+
+    <button id="resetButton">Réinitialiser le compteur</button>
+
+    <script>
+        // Fonction pour lire un cookie par son nom
+        function getCookie(name) {
+            let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? parseInt(match[2]) : null;
+        }
+
+        // Fonction pour définir un cookie avec un nom et une valeur
+        function setCookie(name, value, days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Expiration du cookie
+            document.cookie = name + "=" + value + "; expires=" + date.toUTCString() + "; path=/";
+        }
+
+        // Lecture du cookie nbvisites, si il existe
+        let nbvisites = getCookie("nbvisites");
+
+        if (nbvisites === null) {
+            nbvisites = 0; // Si le cookie n'existe pas, on initialise le compteur à 0
+        }
+
+        // Incrémentation du compteur et mise à jour du cookie
+        nbvisites++;
+        setCookie("nbvisites", nbvisites, 7); // Cookie valide pour 7 jours
+
+        // Affichage du nombre de visites dans le <span> avec l'ID nbvisites
+        document.getElementById("nbvisites").textContent = nbvisites;
+
+        // Réinitialisation du compteur via le bouton
+        document.getElementById("resetButton").onclick = function() {
+            nbvisites = 0;
+            setCookie("nbvisites", nbvisites, 7); // Mise à jour du cookie à 0
+            document.getElementById("nbvisites").textContent = nbvisites;
+        };
+    </script>
+
+</body>
+</html>
