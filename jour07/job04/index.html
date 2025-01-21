@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Connexion</title>
+</head>
+<body>
+
+    <div id="connexionForm">
+        <h1>Veuillez vous connecter</h1>
+        <form id="formConnexion">
+            <input type="text" id="prenom" placeholder="Entrez votre prénom" required>
+            <button type="submit" id="submitButton">Connexion</button>
+        </form>
+    </div>
+
+    <div id="welcomeMessage" style="display:none;">
+        <h1>Bonjour <span id="prenomAffiche"></span> !</h1>
+        <button id="deco">Déconnexion</button>
+    </div>
+
+    <script>
+        // Fonction pour lire un cookie par son nom
+        function getCookie(name) {
+            let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? match[2] : null;
+        }
+
+        // Fonction pour définir un cookie avec un nom, une valeur et une durée d'expiration
+        function setCookie(name, value,
+        <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Connexion</title>
+</head>
+<body>
+
+    <div id="connexionForm">
+        <h1>Veuillez vous connecter</h1>
+        <form id="formConnexion">
+            <input type="text" id="prenom" placeholder="Entrez votre prénom" required>
+            <button type="submit" id="submitButton">Connexion</button>
+        </form>
+    </div>
+
+    <div id="welcomeMessage" style="display:none;">
+        <h1>Bonjour <span id="prenomAffiche"></span> !</h1>
+        <button id="deco">Déconnexion</button>
+    </div>
+
+    <script>
+        // Fonction pour lire un cookie par son nom
+        function getCookie(name) {
+            let match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? match[2] : null;
+        }
+
+        // Fonction pour définir un cookie avec un nom, une valeur et une durée d'expiration
+        function setCookie(name, value, days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Expiration du cookie
+            document.cookie = name + "=" + value + "; expires=" + date.toUTCString() + "; path=/";
+        }
+
+        // Vérifie si le prénom est déjà stocké dans le cookie
+        let prenom = getCookie("prenom");
+
+        // Si un prénom est trouvé dans le cookie, on affiche le message de bienvenue
+        if (prenom) {
+            document.getElementById("connexionForm").style.display = "none";
+            document.getElementById("welcomeMessage").style.display = "block";
+            document.getElementById("prenomAffiche").textContent = prenom;
+        } else {
+            document.getElementById("connexionForm").style.display = "block";
+            document.getElementById("welcomeMessage").style.display = "none";
+        }
+
+        // Soumission du formulaire de connexion
+        document.getElementById("formConnexion").onsubmit = function(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            let prenomInput = document.getElementById("prenom").value.trim();
+
+            if (prenomInput) {
+                // Enregistrer le prénom dans un cookie pour 7 jours
+                setCookie("prenom", prenomInput, 7);
+                // Afficher le message de bienvenue et cacher le formulaire de connexion
+                document.getElementById("connexionForm").style.display = "none";
+                document.getElementById("welcomeMessage").style.display = "block";
+                document.getElementById("prenomAffiche").textContent = prenomInput;
+            }
+        };
+
+        // Déconnexion (supprime le cookie et affiche à nouveau le formulaire)
+        document.getElementById("deco").onclick = function() {
+            document.cookie = "prenom=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"; // Supprimer le cookie
+            document.getElementById("connexionForm").style.display = "block";
+            document.getElementById("welcomeMessage").style.display = "none";
+        };
+    </script>
+
+</body>
+</html>
